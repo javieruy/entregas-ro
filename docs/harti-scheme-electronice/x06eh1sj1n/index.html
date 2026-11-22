@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!-- HUB DE ENTREGA (Fase 11 de /modelar, Rita). La única URL que recibe el comprador: misma ruta que la entrega provisoria.
+     Lo arma armar_hub.py desde maestro/hub.json + idiomas/<xx>/hub.<xx>.json + titulos/landing del idioma.
+     Sin OTO, sin contactos, noindex. Descarga primero en cada tarjeta (memoria/descarga-primero-en-el-hub.md).
+     El bloque marcado «bono» (comentarios de apertura y cierre) se repite una vez por bono. -->
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Accesul tău · 120 de hărți pentru scheme electronice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@600&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+  :root { --bg:#FAF8F5; --dark:#24282F; --alt:#F2F3F7; --ink:#222329; --soft:#686B71; --accent:#2A77BF; --accent-dark:#1F5C95; --gold:#F6CC73; --green:#20835A; --line:rgba(34,35,41,.16); }
+  * { box-sizing:border-box; }
+  html, body { margin:0; background:var(--bg); color:var(--ink); font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; line-height:1.5; -webkit-font-smoothing:antialiased; }
+  h1, h2, h3 { font-family:Montserrat,Inter,sans-serif; font-weight:600; line-height:1.22; margin:0; font-feature-settings:"locl" 0; } /* sin las formas búlgaras cursivas: igual que las tapas y los PDF */
+  img { display:block; max-width:100%; height:auto; }
+  .wrap { max-width:880px; margin:0 auto; padding:0 16px; }
+  .hero { background:var(--dark); color:#fff; text-align:center; padding:40px 0 72px; }
+  .badge { display:inline-block; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#fff; background:var(--green); padding:6px 14px; border-radius:99px; }
+  .hero h1 { font-size:clamp(22px,5vw,32px); margin:18px auto 12px; max-width:720px; }
+  .hero p { color:#D9DBE0; font-size:17px; margin:0 auto; max-width:600px; }
+  .stats { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-top:20px; }
+  .stats span { border:1px solid rgba(246,204,115,.6); color:var(--gold); border-radius:99px; padding:6px 14px; font-weight:700; font-size:15px; }
+  .core { background:#fff; border:2px solid var(--accent); border-radius:18px; margin:-44px 0 36px; overflow:hidden; box-shadow:0 16px 36px rgba(0,0,0,.10); }
+  .core .tapa { background:var(--alt); }
+  .core .cuerpo { padding:20px 18px 22px; }
+  .tag { display:inline-block; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+  .core h2 { font-size:clamp(20px,4vw,26px); margin-bottom:8px; }
+  .core p { color:var(--soft); margin:0 0 16px; }
+  .btn { display:flex; align-items:center; justify-content:center; width:100%; min-height:54px; padding:12px 20px; border-radius:12px; background:var(--accent); color:#fff; font-weight:700; font-size:18px; text-decoration:none; box-shadow:0 4px 0 var(--accent-dark); }
+  .btn:hover, .btn:focus-visible { background:var(--accent-dark); }
+  .abrir { display:block; text-align:center; margin-top:12px; font-size:15px; font-weight:600; color:var(--accent); text-decoration:none; }
+  .meta { display:block; text-align:center; margin-top:6px; font-size:13px; color:var(--soft); }
+  .sec { margin:0 0 36px; }
+  .sec > h2 { font-size:clamp(20px,4vw,26px); margin-bottom:14px; }
+  .grid { display:grid; grid-template-columns:1fr; gap:14px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:16px; display:grid; grid-template-columns:96px 1fr; gap:14px; align-items:start; }
+  .card img { border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,.14); }
+  .card .n { font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+  .card h3 { font-size:17px; margin:4px 0 6px; }
+  .card p { color:var(--soft); font-size:15px; margin:0; }
+  .card .acciones { grid-column:1 / -1; }
+  .card .btn { min-height:50px; font-size:17px; }
+  .pasos { list-style:none; counter-reset:p; margin:0; padding:0; display:grid; gap:10px; }
+  .pasos li { counter-increment:p; position:relative; background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px 16px 14px 58px; }
+  .pasos li::before { content:counter(p); position:absolute; left:14px; top:12px; width:32px; height:32px; border-radius:50%; background:var(--accent); color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center; }
+  .nota { background:var(--alt); border-radius:16px; padding:18px; margin-bottom:12px; }
+  .nota h3 { font-size:17px; margin-bottom:6px; }
+  .nota p { margin:0; color:var(--soft); }
+  .nota .ver { display:inline-block; margin-top:10px; font-size:13px; font-weight:700; color:var(--green); }
+  .proximo { background:var(--dark); color:#fff; border-radius:16px; padding:22px 18px; }
+  .proximo h2 { color:var(--gold); font-size:22px; margin-bottom:8px; }
+  .proximo p { margin:0; color:#E6E7EA; }
+  .pie { text-align:center; color:var(--soft); font-size:13px; padding:28px 0 40px; }
+  @media (min-width:700px) {
+    .core { display:grid; grid-template-columns:1.1fr 1fr; align-items:center; }
+    .core .tapa { height:100%; display:flex; align-items:center; }
+    .core .cuerpo { padding:26px; }
+    .grid { grid-template-columns:1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">✓ Cumpărare confirmată</span>
+    <h1>120 de hărți vizuale pentru citirea schemelor electronice · 6 module cu exerciții + 4 ghiduri cadou</h1>
+    <p>Aici ai tot ce ai cumpărat. Descarcă, deschide pe ecran sau printează pentru banca de lucru.</p>
+    <div class="stats"><span>120 de hărți</span><span>6 module</span><span>4 bonusuri</span></div>
+  </div>
+</header>
+<main class="wrap">
+  <section class="core">
+    <div class="tapa"><img src="img/core.webp" width="960" height="678" alt="120 de hărți pentru scheme electronice"></div>
+    <div class="cuerpo">
+      <span class="tag">Produs principal</span>
+      <h2>120 de Hărți Vizuale de Citire și Interpretare</h2>
+      <p>120 de hărți în 6 module progresive. La fiecare hartă, o greșeală frecventă de evitat; la finalul fiecărui modul, exerciții cu soluții; la finalul cărții, biblioteca de consultare.</p>
+      <a class="btn" href="120-harti-pentru-scheme-electronice.pdf" download="120-harti-pentru-scheme-electronice.pdf">⬇ Descarcă PDF</a>
+      <a class="abrir" href="120-harti-pentru-scheme-electronice.pdf" target="_blank" rel="noopener">Deschide în browser →</a>
+      <span class="meta">PDF · 151 pagini · 14,6 MB</span>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Cele 4 bonusuri ale tale</h2>
+    <div class="grid">
+
+      <div class="card">
+        <img src="img/bono-1.webp" width="96" height="136" alt="BONUS #1" loading="lazy">
+        <div>
+          <span class="n">BONUS #1</span>
+          <h3>Atlas Rapid de Sigle, Indicative și Convenții Electronice</h3>
+          <p>Nu rămâne pierdut în fața siglelor și a identificărilor necunoscute. Consultă rapid semnificația principalelor indicative și convenții folosite în schemele electronice.</p>
+        </div>
+        <div class="acciones">
+          <a class="btn" href="bonus-1-atlas-rapid-de-abrevieri.pdf" download="bonus-1-atlas-rapid-de-abrevieri.pdf">⬇ Descarcă PDF</a>
+          <a class="abrir" href="bonus-1-atlas-rapid-de-abrevieri.pdf" target="_blank" rel="noopener">Deschide în browser →</a>
+          <span class="meta">PDF · 25 pagini · 0,6 MB</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="img/bono-2.webp" width="96" height="136" alt="BONUS #2" loading="lazy">
+        <div>
+          <span class="n">BONUS #2</span>
+          <h3>Diagrame de Flux de Interpretare: De Unde Începi Schema?</h3>
+          <p>Ai deschis o schemă și nu știi de unde să începi? Urmează diagrame de flux vizuale care arată ce să observi mai întâi, cum să localizezi blocurile și pe unde să urmărești conexiunilele.</p>
+        </div>
+        <div class="acciones">
+          <a class="btn" href="bonus-2-diagrame-de-interpretare.pdf" download="bonus-2-diagrame-de-interpretare.pdf">⬇ Descarcă PDF</a>
+          <a class="abrir" href="bonus-2-diagrame-de-interpretare.pdf" target="_blank" rel="noopener">Deschide în browser →</a>
+          <span class="meta">PDF · 19 pagini · 0,5 MB</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="img/bono-3.webp" width="96" height="136" alt="BONUS #3" loading="lazy">
+        <div>
+          <span class="n">BONUS #3</span>
+          <h3>Ghid Practic de Foi de Catalog (Datasheets) și Pini</h3>
+          <p>Învață să identifici terminalele componentelor și să găsești informații importante în foile de catalog (datasheets), cu exemple ilustrate care înlesnesc interpretarea.</p>
+        </div>
+        <div class="acciones">
+          <a class="btn" href="bonus-3-datasheet-uri-si-pini.pdf" download="bonus-3-datasheet-uri-si-pini.pdf">⬇ Descarcă PDF</a>
+          <a class="abrir" href="bonus-3-datasheet-uri-si-pini.pdf" target="_blank" rel="noopener">Deschide în browser →</a>
+          <span class="meta">PDF · 25 pagini · 0,6 MB</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="img/bono-4.webp" width="96" height="136" alt="BONUS #4" loading="lazy">
+        <div>
+          <span class="n">BONUS #4</span>
+          <h3>Checklist de Verificare a Schemei Înainte de Măsurare</h3>
+          <p>Evită verificările prin încercare și eroare. Ai un checklist practic pentru a verifica conexiunile, indicativele, pinii și informațiile esențiale înainte să începi măsurătorile.</p>
+        </div>
+        <div class="acciones">
+          <a class="btn" href="bonus-4-lista-de-verificare-inainte-de-masurare.pdf" download="bonus-4-lista-de-verificare-inainte-de-masurare.pdf">⬇ Descarcă PDF</a>
+          <a class="abrir" href="bonus-4-lista-de-verificare-inainte-de-masurare.pdf" target="_blank" rel="noopener">Deschide în browser →</a>
+          <span class="meta">PDF · 13 pagini · 0,3 MB</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>De unde începi</h2>
+    <ol class="pasos">
+      <li>Descarcă cele 5 PDF-uri și salvează-le pe telefon sau pe computer.</li>
+      <li>Începe cu harta 001 și urmează modulele în ordine: fiecare se sprijină pe cel anterior.</li>
+      <li>La finalul fiecărui modul, rezolvă exercițiile și compară cu soluțiile.</li>
+      <li>Când deschizi o schemă reală, ține la îndemână cele 4 bonusuri.</li>
+    </ol>
+  </section>
+
+  <section class="sec">
+    <div class="nota"><h3>Biblioteca ta de consultare</h3><p>La finalul cărții principale este indexul alfabetic: caută termenul și mergi direct la harta unde este explicat.</p></div>
+    <div class="nota"><h3>Salvează acest link</h3><p>Această pagină este accesul tău la material oricând.</p></div>
+    <div class="nota"><h3>Actualizări incluse</h3><p>Când apare o versiune nouă a hărților sau a bonusurilor, o vei găsi chiar aici, la același link, fără niciun cost suplimentar.</p><span class="ver">Versiunea din 21.11.2026</span></div>
+  </section>
+
+  <section class="proximo">
+    <h2>Pasul următor</h2>
+    <p>Descarcă cartea principală și deschide harta 001. Apoi ia o schemă reală și parcurge-o cu ruta în 5 pași din harta 020.</p>
+  </section>
+</main>
+<footer class="pie">©️ Toate drepturile rezervate.</footer>
+</body>
+</html>

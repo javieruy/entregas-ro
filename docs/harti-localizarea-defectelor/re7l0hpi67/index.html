@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!-- HUB DE ENTREGA DEL UPSELL 2 (Rita, 2026-11-25). Hub aparte, solo para quien compra el upsell: no toca el hub del producto principal.
+     Lo arma armar_hub_upsell2.py desde idiomas/<xx>/hub.<xx>.json + ui.<xx>.json (títulos) + paginas/textos/u2-<xx>.json (etiquetas) + textos/ de Pepa.
+     Copia de upsell1/plantillas/hub-upsell1.html, mismo estilo y paleta.
+     Sin OTO, sin contactos, noindex. Descarga primero en cada tarjeta (memoria/descarga-primero-en-el-hub.md).
+     El bloque marcado «bono» (comentarios de apertura y cierre) se repite una vez por bono. -->
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Accesul tău · 120 de hărți vizuale pentru localizarea defectelor pe plăcile electronice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@600&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+  :root { --bg:#FAF8F5; --dark:#24282F; --alt:#F2F3F7; --ink:#222329; --soft:#686B71; --accent:#2A77BF; --accent-dark:#1F5C95; --gold:#F6CC73; --green:#20835A; --line:rgba(34,35,41,.16); }
+  * { box-sizing:border-box; }
+  html, body { margin:0; background:var(--bg); color:var(--ink); font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; line-height:1.5; -webkit-font-smoothing:antialiased; }
+  h1, h2, h3 { font-family:Montserrat,Inter,sans-serif; font-weight:600; line-height:1.22; margin:0; font-feature-settings:"locl" 0; } /* sin las formas búlgaras cursivas: igual que las tapas y los PDF */
+  img { display:block; max-width:100%; height:auto; }
+  .wrap { max-width:880px; margin:0 auto; padding:0 16px; }
+  .hero { background:var(--dark); color:#fff; text-align:center; padding:40px 0 72px; }
+  .badge { display:inline-block; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#fff; background:var(--green); padding:6px 14px; border-radius:99px; }
+  .hero h1 { font-size:clamp(22px,5vw,32px); margin:18px auto 12px; max-width:720px; }
+  .hero p { color:#D9DBE0; font-size:17px; margin:0 auto; max-width:600px; }
+  .stats { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-top:20px; }
+  .stats span { border:1px solid rgba(246,204,115,.6); color:var(--gold); border-radius:99px; padding:6px 14px; font-weight:700; font-size:15px; }
+  .core { background:#fff; border:2px solid var(--accent); border-radius:18px; margin:-44px 0 36px; overflow:hidden; box-shadow:0 16px 36px rgba(0,0,0,.10); }
+  .core .tapa { background:var(--alt); }
+  .core .cuerpo { padding:20px 18px 22px; }
+  .tag { display:inline-block; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+  .core h2 { font-size:clamp(20px,4vw,26px); margin-bottom:8px; }
+  .core p { color:var(--soft); margin:0 0 16px; }
+  .btn { display:flex; align-items:center; justify-content:center; width:100%; min-height:54px; padding:12px 20px; border-radius:12px; background:var(--accent); color:#fff; font-weight:700; font-size:18px; text-decoration:none; box-shadow:0 4px 0 var(--accent-dark); }
+  .btn:hover, .btn:focus-visible { background:var(--accent-dark); }
+  .abrir { display:block; text-align:center; margin-top:12px; font-size:15px; font-weight:600; color:var(--accent); text-decoration:none; }
+  .meta { display:block; text-align:center; margin-top:6px; font-size:13px; color:var(--soft); }
+  .sec { margin:0 0 36px; }
+  .sec > h2 { font-size:clamp(20px,4vw,26px); margin-bottom:14px; }
+  .grid { display:grid; grid-template-columns:1fr; gap:14px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:16px; display:grid; grid-template-columns:96px 1fr; gap:14px; align-items:start; }
+  .card img { border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,.14); }
+  .card .n { font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+  .card h3 { font-size:17px; margin:4px 0 6px; }
+  .card p { color:var(--soft); font-size:15px; margin:0; }
+  .card .acciones { grid-column:1 / -1; }
+  .card .btn { min-height:50px; font-size:17px; }
+  .pasos { list-style:none; counter-reset:p; margin:0; padding:0; display:grid; gap:10px; }
+  .pasos li { counter-increment:p; position:relative; background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px 16px 14px 58px; }
+  .pasos li::before { content:counter(p); position:absolute; left:14px; top:12px; width:32px; height:32px; border-radius:50%; background:var(--accent); color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center; }
+  .nota { background:var(--alt); border-radius:16px; padding:18px; margin-bottom:12px; }
+  .nota h3 { font-size:17px; margin-bottom:6px; }
+  .nota p { margin:0; color:var(--soft); }
+  .nota .ver { display:inline-block; margin-top:10px; font-size:13px; font-weight:700; color:var(--green); }
+  .proximo { background:var(--dark); color:#fff; border-radius:16px; padding:22px 18px; }
+  .proximo h2 { color:var(--gold); font-size:22px; margin-bottom:8px; }
+  .proximo p { margin:0; color:#E6E7EA; }
+  .pie { text-align:center; color:var(--soft); font-size:13px; padding:28px 0 40px; }
+  @media (min-width:700px) {
+    .core { display:grid; grid-template-columns:1.1fr 1fr; align-items:center; }
+    .core .tapa { height:100%; display:flex; align-items:center; }
+    .core .cuerpo { padding:26px; }
+    .grid { grid-template-columns:1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">✓ Cumpărare confirmată</span>
+    <h1>120 de hărți vizuale pentru localizarea defectelor pe plăcile electronice</h1>
+    <p>Aici ai tot ce ai cumpărat. Descarcă, deschide pe ecran sau printează pentru banca de lucru.</p>
+    <div class="stats"><span>120 de hărți</span><span>6 module</span><span>4 bonusuri</span></div>
+  </div>
+</header>
+<main class="wrap">
+  <section class="core">
+    <div class="tapa"><img src="img/core.webp" width="960" height="678" alt="120 de hărți vizuale pentru localizarea defectelor pe plăcile electronice"></div>
+    <div class="cuerpo">
+      <span class="tag">Produs principal</span>
+      <h2>120 de hărți vizuale pentru localizarea defectelor pe plăcile electronice</h2>
+      <p>Fiecare hartă e un simptom pe o singură pagină. O deschizi la banc, privești placa pe blocuri, măsori în punctele marcate și compari cu tabelul.</p>
+      <a class="btn" href="120-harti-pentru-localizarea-defectelor.pdf" download="120-harti-pentru-localizarea-defectelor.pdf">⬇ Descarcă PDF</a>
+      <a class="abrir" href="120-harti-pentru-localizarea-defectelor.pdf" target="_blank" rel="noopener">Deschide în browser →</a>
+      <span class="meta">PDF · 132 pagini · 4,0 MB</span>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Cele 4 bonusuri ale tale</h2>
+    <div class="grid">
+
+      <div class="card">
+        <img src="img/bono-1.webp" width="96" height="136" alt="Bonus 1" loading="lazy">
+        <div>
+          <span class="n">Bonus 1</span>
+          <h3>Atlas vizual al semnelor fizice de defect pe plăcile electronice</h3>
+          <p>Multe defecte se văd înainte de a măsura. Acest atlas adună 19 semne fizice: cum le recunoști, ce piesă trădează de obicei și ce măsori ca să confirmi.</p>
+        </div>
+        <div class="acciones">
+          <a class="btn" href="bonus-1-atlas-de-semne-ale-defectelor.pdf" download="bonus-1-atlas-de-semne-ale-defectelor.pdf">⬇ Descarcă PDF</a>
+          <a class="abrir" href="bonus-1-atlas-de-semne-ale-defectelor.pdf" target="_blank" rel="noopener">Deschide în browser →</a>
+          <span class="meta">PDF · 23 pagini · 0,5 MB</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="img/bono-2.webp" width="96" height="136" alt="Bonus 2" loading="lazy">
+        <div>
+          <span class="n">Bonus 2</span>
+          <h3>30 de cazuri comentate de diagnostic al plăcilor electronice</h3>
+          <p>Fiecare pagină e o placă întreagă cu un defect real din atelier: ce făcea, ce s-a privit, ce s-a măsurat și unde era defectul. Merg de la simplu la dificil.</p>
+        </div>
+        <div class="acciones">
+          <a class="btn" href="bonus-2-30-de-cazuri-de-diagnostic.pdf" download="bonus-2-30-de-cazuri-de-diagnostic.pdf">⬇ Descarcă PDF</a>
+          <a class="abrir" href="bonus-2-30-de-cazuri-de-diagnostic.pdf" target="_blank" rel="noopener">Deschide în browser →</a>
+          <span class="meta">PDF · 33 pagini · 0,7 MB</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="img/bono-3.webp" width="96" height="136" alt="Bonus 3" loading="lazy">
+        <div>
+          <span class="n">Bonus 3</span>
+          <h3>Ghid rapid: datasheet-uri, pini și puncte de test</h3>
+          <p>Ghidul nu e pentru citit schema: e ca să știi ce tensiune aștepți pe fiecare pin și unde pui vârfurile pe placa reală.</p>
+        </div>
+        <div class="acciones">
+          <a class="btn" href="bonus-3-datasheet-uri-pini-si-puncte-de-test.pdf" download="bonus-3-datasheet-uri-pini-si-puncte-de-test.pdf">⬇ Descarcă PDF</a>
+          <a class="abrir" href="bonus-3-datasheet-uri-pini-si-puncte-de-test.pdf" target="_blank" rel="noopener">Deschide în browser →</a>
+          <span class="meta">PDF · 19 pagini · 0,5 MB</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="img/bono-4.webp" width="96" height="136" alt="Bonus 4" loading="lazy">
+        <div>
+          <span class="n">Bonus 4</span>
+          <h3>Checklist de siguranță și pregătire pentru diagnosticul plăcilor</h3>
+          <p>Înainte să deschizi o placă și înainte de fiecare pornire, parcurge pagina potrivită. Așa nu pierzi defectul inițial și nu adaugi unul nou.</p>
+        </div>
+        <div class="acciones">
+          <a class="btn" href="bonus-4-checklist-de-siguranta-pentru-diagnostic.pdf" download="bonus-4-checklist-de-siguranta-pentru-diagnostic.pdf">⬇ Descarcă PDF</a>
+          <a class="abrir" href="bonus-4-checklist-de-siguranta-pentru-diagnostic.pdf" target="_blank" rel="noopener">Deschide în browser →</a>
+          <span class="meta">PDF · 13 pagini · 0,4 MB</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>De unde începi</h2>
+    <ol class="pasos">
+      <li>Descarcă cele 5 PDF-uri și salvează-le pe telefon sau pe computer.</li>
+      <li>Dacă n-ai diagnosticat niciodată o placă, citește modulul 1 complet: acolo e metoda pe care o folosesc toate celelalte hărți.</li>
+      <li>Dacă știi deja ce face aparatul, caută simptomul în cuprins: nu pornește (modulul 2), sursă în comutație (modulul 3), pornește dar nu funcționează (modulul 4), o ieșire care nu acționează (modulul 5) sau un defect care vine și pleacă (modulul 6).</li>
+    </ol>
+  </section>
+
+  <section class="sec">
+    <div class="nota"><h3>Salvează acest link</h3><p>Această pagină este accesul tău la material oricând.</p></div>
+  </section>
+
+  <section class="proximo">
+    <h2>Pasul următor</h2>
+    <p>Ai deja metoda. Pasul următor e s-o folosești: alege o placă pe care o ai pusă deoparte, începe cu harta 1 și urmează traseul simptomului fără să sari pași.</p>
+  </section>
+</main>
+<footer class="pie">©️ Toate drepturile rezervate.</footer>
+</body>
+</html>
